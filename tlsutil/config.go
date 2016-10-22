@@ -148,8 +148,8 @@ func (c *Config) OutgoingTLSConfig() (*tls.Config, error) {
 // isn't exported and Go 1.7's vet uncovered an unsafe copy of a mutex in
 // here.
 //
-// TODO (slackpad) - This isn't very future-proof. Come up with a better
-// way to do this.
+// TODO (slackpad) - This can be removed once we move to Go 1.8, see
+// https://github.com/golang/go/commit/d24f446 for details.
 func clone(c *tls.Config) *tls.Config {
 	return &tls.Config{
 		Rand:                        c.Rand,
